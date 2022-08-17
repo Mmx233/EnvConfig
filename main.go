@@ -29,12 +29,28 @@ func parse(prefix string, c reflect.Value) {
 		case reflect.Bool:
 			v.SetBool(env == "true")
 		case reflect.Uint:
+			fallthrough
+		case reflect.Uint8:
+			fallthrough
+		case reflect.Uint16:
+			fallthrough
+		case reflect.Uint32:
+			fallthrough
+		case reflect.Uint64:
 			d, e := strconv.ParseUint(env, 10, 64)
 			if e != nil {
 				panic(e)
 			}
 			v.SetUint(d)
 		case reflect.Int:
+			fallthrough
+		case reflect.Int8:
+			fallthrough
+		case reflect.Int16:
+			fallthrough
+		case reflect.Int32:
+			fallthrough
+		case reflect.Int64:
 			d, e := strconv.ParseInt(env, 10, 64)
 			if e != nil {
 				panic(e)
